@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tiffany Woodley – Energy, Data Science and AI</title>
+<meta name="description" content="Tiffany Woodley — engineer and data scientist across energy, machine learning and AI. Cape Town.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f6f8f7; --paper:#ffffff; --ink:#16282b; --muted:#5b6d70; --rule:#d6e0e0;
+  --teal:#1f6b72; --teal-soft:#e6f0f0; --amber:#c8771a; --amber-soft:#fbefdc;
+  --edu:#5a6f8a; --edu-soft:#e8eef4;
+  --display:'Syne',ui-sans-serif,system-ui,sans-serif;
+  --sans:'Manrope',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1819; --paper:#142325; --ink:#e6eeee; --muted:#9db0b2; --rule:#27393b;
+    --teal:#5fc0c8; --teal-soft:#1b3235; --amber:#f0a24a; --amber-soft:#3a2b17;
+    --edu:#9bb0c9; --edu-soft:#1c2833;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1819; --paper:#142325; --ink:#e6eeee; --muted:#9db0b2; --rule:#27393b;
+  --teal:#5fc0c8; --teal-soft:#1b3235; --amber:#f0a24a; --amber-soft:#3a2b17;
+  --edu:#9bb0c9; --edu-soft:#1c2833;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:40;background:linear-gradient(90deg,var(--amber),var(--teal));transform-origin:0 50%;transform:scaleX(0)}
+.ui-bar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:14px;z-index:35;display:flex;gap:8px}
+.ui-bar button,.ui-bar .ui-dl{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);color:var(--ink);
+  font-size:1.05rem;cursor:pointer;display:inline-grid;place-items:center;transition:transform .3s,border-color .2s;
+  text-decoration:none;
+}
+.ui-bar button:hover,.ui-bar .ui-dl:hover{border-color:var(--teal)}
+#theme:hover{transform:rotate(180deg)}
+
+.career-rail{
+  position:fixed;left:max(12px, calc(50% - 520px - 72px));top:50%;transform:translateY(-50%);
+  z-index:34;display:none;flex-direction:column;align-items:center;gap:0;width:56px;padding:14px 0;pointer-events:none;
+}
+.career-rail.is-on{display:flex}
+.career-rail .rail-label{
+  font:600 .65rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  writing-mode:vertical-rl;transform:rotate(180deg);margin-bottom:12px;
+}
+.career-track{position:relative;width:4px;flex:1;min-height:320px;max-height:min(70vh,520px);background:var(--rule);border-radius:99px;pointer-events:auto;overflow:visible}
+.career-segs{position:absolute;inset:0;border-radius:inherit;overflow:hidden;z-index:0}
+.career-seg{position:absolute;left:0;width:100%;opacity:.55}
+.career-seg.ai{background:var(--teal)}
+.career-seg.energy{background:var(--amber)}
+.career-seg.edu{background:var(--edu)}
+.career-fill{
+  position:absolute;left:0;top:0;width:100%;height:0%;border-radius:inherit;z-index:1;
+  background:linear-gradient(180deg,var(--teal),var(--amber) 45%,var(--edu));
+  box-shadow:0 0 12px color-mix(in srgb,var(--teal) 35%,transparent);
+}
+.career-thumb{
+  position:absolute;left:50%;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--teal);box-shadow:0 6px 18px rgba(31,107,114,.28);
+  cursor:grab;touch-action:none;z-index:3;
+}
+.career-thumb:active{cursor:grabbing}
+.career-thumb.energy{border-color:var(--amber);box-shadow:0 6px 18px rgba(200,119,26,.28)}
+.career-thumb.edu{border-color:var(--edu);box-shadow:0 6px 18px rgba(90,111,138,.28)}
+.career-nodes{position:absolute;inset:0;pointer-events:none;z-index:2}
+.career-nodes button{
+  position:absolute;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;padding:0;border-radius:50%;
+  border:2px solid var(--rule);background:var(--bg);cursor:pointer;pointer-events:auto;
+  transition:transform .2s,border-color .2s,background .2s;
+}
+.career-nodes button.ai{border-color:var(--teal)}
+.career-nodes button.energy{border-color:var(--amber)}
+.career-nodes button.edu{border-color:var(--edu)}
+.career-nodes button:hover,.career-nodes button[aria-current="true"]{
+  transform:translate(-50%,-50%) scale(1.25);border-color:var(--teal);background:var(--teal);
+}
+.career-nodes button.energy:hover,.career-nodes button.energy[aria-current="true"]{border-color:var(--amber);background:var(--amber)}
+.career-nodes button.edu:hover,.career-nodes button.edu[aria-current="true"]{border-color:var(--edu);background:var(--edu)}
+.career-year{
+  position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+  font:600 .68rem/1 var(--sans);color:var(--muted);white-space:nowrap;opacity:0;transition:opacity .2s;
+}
+.career-nodes button:hover .career-year,
+.career-nodes button[aria-current="true"] .career-year{opacity:1;color:var(--ink)}
+.career-readout{margin-top:12px;font:600 .72rem/1.25 var(--sans);color:var(--teal);text-align:center;max-width:8rem}
+.career-readout.edu{color:var(--edu)}
+.career-readout.energy{color:var(--amber)}
+.career-key{
+  margin-top:10px;display:grid;gap:4px;font:500 .62rem/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:center;
+}
+.career-key span{display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.career-key i{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.career-key .e{background:var(--amber)}
+.career-key .u{background:var(--edu)}
+
+/* —— Cape Town hero —— */
+.hero{
+  position:relative;min-height:min(78vh,720px);display:grid;align-items:end;
+  color:#f4f7f6;overflow:hidden;isolation:isolate;
+}
+.hero-media{position:absolute;inset:0;z-index:-1}
+.hero-media>video,.hero-media>.hero-fallback{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+}
+.hero-media>video{z-index:0}
+.hero-media>.hero-fallback{z-index:0;display:none}
+.hero-flicker{
+  position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
+  /* Keep sparks in the city band — not over Table Mountain */
+  clip-path:inset(48% 4% 8% 18%);
+}
+.hero-flicker span{
+  position:absolute;width:2px;height:2px;border-radius:50%;
+  background:rgba(255,236,190,.95);
+  box-shadow:
+    0 0 2px 1px rgba(255,210,130,.55),
+    0 0 6px 2px rgba(255,180,90,.25);
+  opacity:0;transform:scale(.6);
+  will-change:opacity,transform;
+}
+.hero-media.is-flickering .hero-flicker{opacity:1}
+.hero-media.is-flickering .hero-flicker span{animation:heroSpark var(--d,1.8s) var(--delay,0s) ease-in-out infinite}
+@keyframes heroSpark{
+  0%,100%{opacity:0;transform:scale(.5)}
+  6%{opacity:.15;transform:scale(.7)}
+  10%{opacity:1;transform:scale(1.15)}
+  14%{opacity:.2;transform:scale(.75)}
+  18%{opacity:.85;transform:scale(1.05)}
+  24%{opacity:0;transform:scale(.5)}
+  55%{opacity:0;transform:scale(.5)}
+  58%{opacity:1;transform:scale(1.2)}
+  62%{opacity:.1;transform:scale(.6)}
+  70%{opacity:0;transform:scale(.5)}
+}
+.hero-shade{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    /* Keep city lights visible upper/right; darken only behind text/portrait */
+    radial-gradient(ellipse 85% 65% at 16% 90%, rgba(3,10,16,.78) 0%, rgba(3,10,16,.35) 42%, transparent 68%),
+    linear-gradient(90deg, rgba(4,12,18,.38) 0%, rgba(4,12,18,.12) 42%, transparent 70%),
+    linear-gradient(180deg,
+      rgba(8,20,30,.14) 0%,
+      rgba(8,20,30,.08) 36%,
+      rgba(6,14,20,.48) 72%,
+      rgba(4,10,16,.70) 100%);
+}
+.hero-inner{
+  width:min(900px,100%);margin:0 auto;padding:40px 28px calc(36px + env(safe-area-inset-bottom,0px));
+  display:grid;grid-template-columns:auto 1fr;gap:24px 28px;align-items:center;position:relative;z-index:1;
+  filter:drop-shadow(0 2px 18px rgba(0,0,0,.35));
+}
+.hero .portrait{
+  width:min(132px,28vw);aspect-ratio:1;border-radius:50%;overflow:hidden;
+  border:3px solid rgba(255,255,255,.85);
+  box-shadow:
+    0 0 0 6px rgba(4,12,18,.35),
+    0 18px 44px rgba(0,0,0,.55);
+}
+.hero .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.hero-kicker{
+  font:500 .8rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px;
+  color:rgba(244,247,246,.95);text-shadow:0 1px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.45);
+}
+.hero h1{
+  font:700 clamp(2.4rem,6vw,3.6rem)/1.02 var(--display);letter-spacing:-.03em;margin:0;color:#fff;
+  text-shadow:0 2px 28px rgba(0,0,0,.7),0 1px 3px rgba(0,0,0,.55);
+}
+.hero .role{
+  font:500 1.12rem/1.4 var(--sans);margin:10px 0 0;max-width:34ch;color:#f4f7f6;
+  text-shadow:0 1px 16px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4);
+}
+.hero .contact{
+  display:flex;flex-wrap:wrap;gap:6px 22px;margin:16px 0 0;font-size:.95rem;color:rgba(244,247,246,.95);
+  text-shadow:0 1px 12px rgba(0,0,0,.65);
+}
+.hero .contact a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(95,192,200,.9)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .btn{
+  font:500 .85rem/1 var(--sans);display:inline-flex;align-items:center;padding:9px 14px;
+  border:1px solid rgba(244,247,246,.55);background:rgba(8,20,30,.42);color:#fff;text-decoration:none;cursor:pointer;
+  backdrop-filter:blur(10px);transition:border-color .2s,background .2s;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+}
+.hero .btn:hover{border-color:rgba(244,247,246,.85);background:rgba(8,20,30,.58)}
+.hero .btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.hero .btn.primary:hover{filter:brightness(1.06)}
+.scroll-cue{
+  grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:10px;margin-top:8px;padding:0;border:0;background:none;
+  color:rgba(244,247,246,.88);font:500 .8rem/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+  text-shadow:0 1px 10px rgba(0,0,0,.5);
+}
+.scroll-cue svg{transition:transform .3s}
+.scroll-cue:hover svg{transform:translateY(4px)}
+
+.page{max-width:900px;margin:-28px auto 48px;background:var(--paper);padding:48px 64px 64px;border-top:6px solid var(--teal);box-shadow:0 1px 0 var(--rule),0 18px 50px rgba(22,40,43,.08);position:relative;z-index:2}
+.btn{
+  font:500 .85rem/1 var(--sans);display:inline-flex;align-items:center;padding:9px 14px;
+  border:1px solid var(--rule);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;
+  transition:border-color .2s,background .2s;
+}
+.btn:hover{border-color:var(--teal)}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+
+h2{font:600 1.05rem/1.2 var(--sans);color:var(--teal);margin:0 0 18px;display:flex;align-items:center;gap:16px}
+h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+section{margin-top:44px}
+.lead{font:600 1.4rem/1.35 var(--display);margin:0 0 14px;letter-spacing:-.02em;max-width:36ch}
+.profile p{margin:0 0 12px;max-width:68ch}
+
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+.skills div{border-left:3px solid var(--teal);padding-left:16px}
+.skills div:first-child{border-color:var(--amber)}
+.skills h3{font:600 .95rem/1.3 var(--sans);margin:0 0 6px}
+.skills ul{list-style:none;margin:0;padding:0;color:var(--muted);font-size:.95rem;line-height:1.7}
+.skills-tip{margin:48px 0 0;color:var(--muted);font-size:.88rem;line-height:1.45;max-width:52ch}
+
+.legend{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;color:var(--muted);font-size:.85rem;margin:-6px 0 22px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--teal);margin-right:7px}
+.legend .e{background:var(--amber)}
+.legend .u{background:var(--edu)}
+
+.timeline{position:relative;padding:12px 0 24px}
+.tl-spine{position:absolute;left:173px;top:10px;bottom:28px;width:3px;border-radius:99px;background:var(--rule);z-index:0;overflow:visible}
+.tl-segs{position:absolute;inset:0;border-radius:inherit;overflow:hidden;z-index:0}
+.tl-seg{position:absolute;left:0;width:100%;opacity:.35}
+.tl-seg.ai{background:var(--teal)}
+.tl-seg.energy{background:var(--amber)}
+.tl-seg.edu{background:var(--edu)}
+.tl-fill{
+  position:absolute;left:0;top:0;width:100%;height:0%;border-radius:inherit;z-index:1;
+  background:linear-gradient(180deg,var(--teal),var(--amber) 48%,var(--edu));
+  box-shadow:0 0 16px color-mix(in srgb,var(--teal) 30%,transparent);
+}
+.tl-thumb{
+  position:absolute;left:50%;top:0;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--teal);z-index:3;box-shadow:0 4px 16px rgba(31,107,114,.3);pointer-events:none;
+}
+.tl-thumb.energy{border-color:var(--amber);box-shadow:0 4px 16px rgba(200,119,26,.3)}
+.tl-thumb.edu{border-color:var(--edu);box-shadow:0 4px 16px rgba(90,111,138,.3)}
+
+.job{position:relative;display:grid;grid-template-columns:150px 1fr;gap:0 28px;padding-bottom:72px;--dot:var(--teal)}
+.job.energy{--dot:var(--amber)}
+.job.edu{--dot:var(--edu)}
+.job:last-child{padding-bottom:20px}
+.job::before{
+  content:"";position:absolute;left:167px;top:4px;z-index:2;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--dot);box-shadow:0 0 0 4px var(--paper);transition:background .3s,box-shadow .3s,transform .3s;
+}
+.job .when{font-size:.88rem;color:var(--muted);padding-top:2px;line-height:1.4;text-align:right;font-variant-numeric:tabular-nums}
+.job .when .yr{display:block;font:600 .95rem/1.2 var(--sans);color:var(--ink);letter-spacing:-.01em}
+.job .when .meta{display:block;margin-top:4px;font-size:.8rem}
+.job .body{padding-left:34px}
+.job h3{font:600 1.1rem/1.3 var(--sans);margin:0}
+.job .co{color:var(--teal);font-weight:500}
+.job.energy .co{color:var(--amber)}
+.job.edu .co{color:var(--edu)}
+.sub{font-weight:600;font-size:.95rem;margin:14px 0 4px}
+.job ul{margin:6px 0 0;padding-left:18px}
+.job li{margin:0 0 5px;max-width:68ch;font-size:.97rem}
+.job li::marker{color:var(--teal)}
+.earlier{color:var(--muted);font-size:.95rem;margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tags span{font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--teal-soft);color:var(--teal);font-weight:500}
+.job.energy .tags span{background:var(--amber-soft);color:var(--amber)}
+.job.edu .tags span{background:var(--edu-soft);color:var(--edu)}
+
+.closing{margin-top:48px;padding-top:28px;border-top:1px solid var(--rule);color:var(--muted)}
+.closing a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--teal);font-weight:500}
+
+@media (max-width:1100px){.career-rail{display:none!important}}
+@media (max-width:720px){
+  .hero{min-height:min(88vh,640px)}
+  .hero-inner{grid-template-columns:1fr;justify-items:start;padding:32px 22px 28px}
+  .hero .portrait{width:96px}
+  .page{margin:0;padding:36px 22px 44px;border-radius:0}
+  .skills{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr}
+  .job::before{left:0;top:6px}
+  .tl-spine{left:5.5px;top:12px}
+  .job .when{padding-left:34px;margin-bottom:6px;text-align:left}
+}
+
+button:focus-visible,[tabindex]:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.chip{font:500 .85rem/1 var(--sans);display:inline-flex;align-items:center;padding:8px 14px;border-radius:99px;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.chip:hover{border-color:var(--teal);transform:translateY(-1px)}
+.chip[aria-pressed=true]{background:var(--teal-soft);border-color:var(--teal)}
+.status{color:var(--muted);font-size:.85rem;flex-basis:100%;min-height:1.4em;margin-top:2px}
+.job{transition:opacity .35s}
+.job.dim{opacity:.25}
+.job.active .when .yr{color:var(--ink)}
+.job.active::before{background:var(--dot);transform:scale(1.15);box-shadow:0 0 0 4px var(--paper),0 0 0 10px color-mix(in srgb,var(--dot) 22%,transparent)}
+.job.passed::before{background:var(--dot)}
+.job h3{cursor:pointer}
+.fb{background:none;border:0;color:var(--muted);cursor:pointer;margin-left:6px;padding:2px;vertical-align:middle;line-height:0;transition:transform .3s}
+.job h3:hover .fb{color:var(--teal)}
+.job.closed .fb{transform:rotate(-90deg)}
+.fold{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1)}
+.fold>div{overflow:hidden;min-height:0}
+.job.closed .fold{grid-template-rows:0fr}
+.tags span{cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.tags span:hover{transform:translateY(-2px)}
+.tags span.hit{background:var(--teal);color:var(--paper)}
+.job.energy .tags span.hit{background:var(--amber);color:var(--paper)}
+.job.edu .tags span.hit{background:var(--edu);color:var(--paper)}
+.skills li{cursor:pointer;width:fit-content;transition:transform .2s,color .2s}
+.skills li:hover,.skills li.sel{color:var(--ink);transform:translateX(4px)}
+.skills li.sel{font-weight:600}
+.skills div{transition:padding-left .2s}
+.skills div:hover{padding-left:20px}
+
+/* Skill story panel */
+.story-backdrop{
+  position:fixed;inset:0;z-index:45;background:rgba(8,18,22,.12);opacity:0;pointer-events:none;
+  transition:opacity .28s ease;
+}
+.story-backdrop.is-on{opacity:1}
+.story-panel{
+  position:fixed;top:0;right:0;z-index:50;width:min(420px,100%);height:100%;
+  background:var(--paper);color:var(--ink);border-left:1px solid var(--rule);
+  box-shadow:-18px 0 50px rgba(22,40,43,.16);
+  transform:translateX(104%);transition:transform .34s cubic-bezier(.2,.7,.2,1);
+  display:flex;flex-direction:column;padding:
+    calc(18px + env(safe-area-inset-top,0px))
+    calc(22px + env(safe-area-inset-right,0px))
+    calc(22px + env(safe-area-inset-bottom,0px))
+    22px;
+  pointer-events:auto;
+}
+.story-panel.is-on{transform:none}
+.story-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
+.story-kicker{font:600 .72rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+.story-panel h2{font:700 1.55rem/1.15 var(--display);letter-spacing:-.02em;margin:0;max-width:16ch}
+.story-close{
+  flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);
+  background:transparent;color:var(--ink);cursor:pointer;font-size:1.2rem;line-height:1;
+  display:inline-grid;place-items:center;transition:border-color .2s,background .2s;
+}
+.story-close:hover{border-color:var(--teal);background:var(--teal-soft)}
+.story-body{overflow:auto;flex:1;padding-right:4px}
+.story-lead{font:500 1.05rem/1.45 var(--sans);margin:0 0 16px;color:var(--ink)}
+.story-body p{margin:0 0 14px;color:var(--muted);font-size:.95rem;line-height:1.65}
+.story-roles{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+.story-roles li{margin:0}
+.story-roles button{
+  width:100%;text-align:left;border:1px solid var(--rule);background:var(--bg);color:var(--ink);
+  padding:12px 14px;cursor:pointer;border-radius:10px;transition:border-color .2s,transform .2s,background .2s;
+}
+.story-roles button:hover{border-color:var(--teal);transform:translateY(-1px);background:var(--paper)}
+.story-roles .yr{display:block;font:600 .72rem/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.story-roles .ttl{display:block;font:600 .92rem/1.3 var(--sans)}
+.story-roles .co{color:var(--teal);font-weight:500}
+.story-roles .energy .co{color:var(--amber)}
+.story-roles .edu .co{color:var(--edu)}
+@media (max-width:720px){
+  .story-panel{width:100%;height:min(78vh,640px);top:auto;bottom:0;border-left:0;border-top:1px solid var(--rule);
+    border-radius:18px 18px 0 0;transform:translateY(104%);box-shadow:0 -18px 50px rgba(22,40,43,.18)}
+  .story-panel.is-on{transform:none}
+}
+
+@media (prefers-reduced-motion:no-preference){
+.hero-media>video{animation:heroZoom 14s ease-out both}
+.hero-kicker,.hero .portrait{animation:fu .7s .15s both}
+.hero h1{animation:nm 1s cubic-bezier(.2,.7,.2,1) .05s both}
+.hero .role{animation:fu .7s .4s both}
+.hero .contact,.hero .actions,.scroll-cue{animation:fu .7s .55s both}
+@keyframes heroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
+@keyframes nm{from{clip-path:inset(-20% 100% -30% -5%);transform:translateX(-14px)}to{clip-path:inset(-20% -5% -30% -5%);transform:none}}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+.js .job.dim.in{opacity:.25}
+.js .skills>div:nth-child(2){transition-delay:.1s}.js .skills>div:nth-child(3){transition-delay:.2s}
+.js .job::before{transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1) .15s,background .3s,box-shadow .3s}
+.js .job.in::before{transform:scale(1)}
+.js .job.active.in::before{transform:scale(1.15)}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-media>video{display:none}
+  .hero-media>.hero-fallback{display:block}
+  .hero-flicker{display:none!important}
+}
+.print-masthead{display:none}
+@media print{
+  @page{size:A4;margin:12mm 11mm}
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+    --bg:#fff; --paper:#fff; --ink:#16282b; --muted:#4a5c5f; --rule:#c9d4d4;
+    --teal:#1a5c62; --teal-soft:#e8f1f1; --amber:#a86414; --amber-soft:#f7ebd8;
+    --edu:#4a5f78; --edu-soft:#e8eef4;
+  }
+  html,body{
+    background:#fff!important;color:var(--ink)!important;font-size:9.5pt;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  *{box-shadow:none!important;text-shadow:none!important;filter:none!important;backdrop-filter:none!important;animation:none!important;transition:none!important}
+
+  /* Strip all interactive UI / buttons for a standalone CV */
+  button,.btn,.chip,.ui,.ui-bar,.progress,.fb,.career-rail,
+  .tl-spine,.tl-thumb,.tl-segs,.tl-fill,.story-panel,.story-backdrop,
+  .scroll-cue,.hero,.hero-media,.hero-shade,.skills-tip,.legend,.status,
+  .no-print{display:none!important}
+  a[href]::after{content:none!important}
+
+  .print-masthead{
+    display:grid!important;grid-template-columns:64px 1fr;gap:12px 14px;align-items:center;
+    border-bottom:2px solid var(--teal);padding:0 0 10px;margin:0 0 12px;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+  .print-masthead .portrait{width:64px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:1.5px solid var(--rule)}
+  .print-masthead .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
+  .print-masthead .kicker{font:600 8pt/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+  .print-masthead h1{font:700 18pt/1.05 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}
+  .print-masthead .role{font:500 10pt/1.35 var(--sans);margin:4px 0 0;color:var(--muted)}
+  .print-masthead .contact{display:flex;flex-wrap:wrap;gap:2px 12px;margin:6px 0 0;font-size:8.5pt;color:var(--ink)}
+  .print-masthead .contact a{color:var(--ink);text-decoration:none;border:0}
+
+  .page{
+    margin:0!important;padding:0!important;max-width:none;width:100%;
+    background:#fff!important;border:0!important;
+  }
+  section{margin-top:12px}
+  h2{font-size:10pt;margin:0 0 6px;color:var(--teal)!important;gap:10px}
+  h2::after{height:1px;background:var(--rule)}
+  .lead{font-size:10.5pt;max-width:none;margin:0 0 5px;line-height:1.3}
+  .profile p{max-width:none;font-size:8.8pt;line-height:1.35;margin:0 0 5px}
+  .skills{margin-top:8px;gap:8px 14px}
+  .skills div{padding-left:10px;border-left-width:2px}
+  .skills h3{font-size:8.5pt;margin:0 0 2px}
+  .skills ul{font-size:8pt;line-height:1.35;color:var(--ink)}
+  .skills li{cursor:default;transform:none!important;color:var(--ink)!important;font-weight:400!important}
+
+  .timeline{padding:2px 0 0}
+  .job{
+    break-inside:avoid;page-break-inside:avoid;
+    grid-template-columns:88px 1fr;gap:0 12px;padding-bottom:9px;opacity:1!important;
+  }
+  .job::before{display:none!important}
+  .job .when{font-size:7.5pt;text-align:left}
+  .job .when .yr{font-size:8pt;color:var(--ink)!important}
+  .job .when .meta{font-size:7pt;margin-top:1px}
+  .job .body{padding-left:0}
+  .job h3{font-size:9.2pt;margin:0}
+  .job .co{font-weight:600}
+  .job ul{margin:2px 0 0;padding-left:14px}
+  .job li{font-size:8pt;margin:0 0 1px;max-width:none;line-height:1.3}
+  .sub{font-size:8pt;margin:5px 0 1px}
+  .earlier{font-size:8pt;margin:0 0 2px}
+  .tags{margin-top:3px;gap:3px}
+  .tags span{
+    font-size:6.5pt;padding:0 5px;line-height:1.5;border:0.5pt solid var(--rule);
+    background:transparent!important;color:var(--muted)!important;border-radius:2px;
+  }
+  .job.closed .fold,.fold{display:block!important;grid-template-rows:none!important;height:auto!important}
+  .fold>div{overflow:visible!important;height:auto!important}
+  .job.dim,.js .job.dim.in{opacity:1!important}
+  html.js .rv{opacity:1!important;transform:none!important}
+  .closing{margin-top:10px;padding-top:8px;font-size:8pt;break-inside:avoid;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="career-rail" id="careerRail" aria-label="Work and education timeline scrubber">
+  <span class="rail-label">Path</span>
+  <div class="career-track" id="careerTrack">
+    <div class="career-segs" id="careerSegs" aria-hidden="true"></div>
+    <div class="career-fill" id="careerFill"></div>
+    <div class="career-nodes" id="careerNodes"></div>
+    <div class="career-thumb" id="careerThumb" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Scrub work and education timeline" tabindex="0"></div>
+  </div>
+  <div class="career-readout" id="careerReadout">2012</div>
+  <div class="career-key" aria-hidden="true"><span><i></i>AI</span><span><i class="e"></i>Energy</span><span><i class="u"></i>Education</span></div>
+</nav>
+<div class="ui-bar">
+  <a id="pdf" class="ui-dl" href="assets/Tiffany_Woodley_CV.pdf" download="Tiffany_Woodley_CV.pdf" title="Download CV" aria-label="Download CV">↓</a>
+  <button id="theme" aria-label="Switch light or dark theme" title="Switch theme">◐</button>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-media" id="heroMedia" aria-hidden="true">
+    <video class="hero-video" autoplay muted playsinline poster="assets/cpt_01_afternoon.jpg" width="1280" height="720">
+      <source src="assets/cape_town_dusk_to_night.mp4" type="video/mp4">
+    </video>
+    <img class="hero-fallback" src="assets/cpt_05_night_lit.jpg" alt="" width="1280" height="720">
+    <div class="hero-flicker" aria-hidden="true"></div>
+    <div class="hero-shade"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="portrait"><img src="assets/portrait.jpg" alt="Portrait of Tiffany Woodley" width="264" height="264"></div>
+    <div>
+      <p class="hero-kicker">Cape Town · Energy · Data · AI</p>
+      <h1>Tiffany Woodley</h1>
+      <p class="role">Engineer and data scientist across energy, machine learning and AI</p>
+      <div class="contact">
+        <a href="mailto:tiff.woodley@gmail.com">tiff.woodley@gmail.com</a>
+        <a href="https://www.linkedin.com/in/tiffany-woodley" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="actions">
+        <a class="btn primary" id="pdf2" href="assets/Tiffany_Woodley_CV.pdf" download="Tiffany_Woodley_CV.pdf">Download CV</a>
+        <a class="btn" href="#profile">View CV here</a>
+      </div>
+    </div>
+    <button class="scroll-cue" id="begin" type="button">
+      Scroll
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v9M3.5 7.5L7 11l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="cv">
+  <div class="print-masthead" aria-hidden="true">
+    <div class="portrait"><img src="assets/portrait.jpg" alt="" width="128" height="128"></div>
+    <div>
+      <p class="kicker">Cape Town · Energy · Data · AI</p>
+      <h1>Tiffany Woodley</h1>
+      <p class="role">Engineer, data scientist and technology leader across energy, machine learning and AI</p>
+      <div class="contact">
+        <a href="mailto:tiff.woodley@gmail.com">tiff.woodley@gmail.com</a>
+        <a href="https://www.linkedin.com/in/tiffany-woodley">linkedin.com/in/tiffany-woodley</a>
+      </div>
+    </div>
+  </div>
+  <section class="profile" id="profile">
+    <h2>Professional Profile</h2>
+    <p class="lead">Engineer, data scientist and technology leader — from battery and solar modelling under load shedding to production machine learning and AI systems.</p>
+    <p>I started in renewables software, building SolaFuture’s first battery sizing and financial modelling tools and a peak-shaving product sold commercially. At Solink, through South Africa’s load-shedding years, I owned the company’s battery financial modelling strategy — Eskom-driven scenarios, sizing, solar forecasting with machine learning, control algorithms and cost optimisation — leading the approach, mentoring engineers and reviewing every proposal. I later led systems development there, shipping monitoring and consulting platforms end to end.</p>
+    <p>That path sits on dual master’s training in data science and advanced analytics, including reinforcement learning for peak shaving, and applied ML engineering at Bytefuse. I now lead data science at Sand Technologies: production ML and MLOps, forecasting frameworks, scenario-based decision making and generative AI workflows. I turn quantitative insight into software and decisions teams can trust.</p>
+    <div class="skills">
+      <div><h3>Energy and modelling</h3><ul><li>Battery and Solar Financial Modeling</li><li>Battery System Control Systems</li><li>Forecasting</li><li>Optimisation</li></ul></div>
+      <div><h3>Data science and AI</h3><ul><li>Machine learning</li><li>Generative AI</li><li>LLM workflows</li><li>MLOps</li></ul></div>
+      <div><h3>Technology</h3><ul><li>Software engineering</li><li>Data engineering</li><li>Solutions Architecture</li><li>Technical Leadership</li></ul></div>
+    </div>
+    <p class="skills-tip no-print">Tip: click a skill to see the related experience and a short story of how it shows up across my career.</p>
+  </section>
+
+  <section id="timeline-section">
+    <h2>Timeline</h2>
+    <div class="legend ui no-print">
+      <button class="chip" data-sector="energy" aria-pressed="false"><i class="e"></i>Energy</button>
+      <button class="chip" data-sector="ai" aria-pressed="false"><i></i>Data &amp; AI</button>
+      <button class="chip" data-sector="edu" aria-pressed="false"><i class="u"></i>Education</button>
+      <button class="chip" id="toggleAll">Collapse all</button>
+      <button class="chip" id="clear" hidden>Clear filter</button>
+      <span class="status" id="status" aria-live="polite">Tip: click any skill or tag to see where it was used.</span>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <article class="job" data-year="2025" data-label="Sand" data-kind="ai">
+        <div class="when"><span class="yr">2025 – Now</span><span class="meta">Full time</span></div>
+        <div class="body">
+          <h3>Senior Data Scientist · <span class="co">Sand Technologies</span></h3>
+          <p class="sub">Healthcare – Lead Data Scientist and Engineer</p>
+          <ul>
+            <li>Lead data science and engineering for the Healthcare product — pipelines, data architecture and analytical delivery.</li>
+            <li>Support scenario-based decision making — structuring options, trade-offs and outcomes so teams can choose under uncertainty.</li>
+            <li>Run projects end to end: frame the problem, choose the approach, design the system and ship with cross-functional teams.</li>
+            <li>Translate messy operational requirements into practical, production-ready data solutions.</li>
+          </ul>
+          <p class="sub">Central R&amp;D – Data Science and AI</p>
+          <ul>
+            <li>Work across forecasting model approaches and focus on the production framework — taking models into reliable systems with MLOps, monitoring and operational handover.</li>
+            <li>Build reusable data-quality and drift monitoring for MLOps — catch distribution shifts before models degrade in production.</li>
+            <li>Design monitoring architecture that helps organisations keep production ML reliable over time.</li>
+            <li>Bring generative AI and LLMs into analytical and software workflows to speed up delivery of robust applications.</li>
+          </ul>
+          <div class="tags"><span>Software engineering</span><span>Machine learning</span><span>Data engineering</span><span>Forecasting</span><span>Optimisation</span><span>Generative AI</span><span>LLM workflows</span><span>LLMs</span><span>MLOps</span><span>Technical Leadership</span><span>Solutions Architecture</span><span>Data quality</span><span>Model monitoring</span></div>
+        </div>
+      </article>
+
+      <article class="job energy" data-year="2024" data-label="Solink · Head" data-kind="energy">
+        <div class="when"><span class="yr">2024 – 2025</span><span class="meta">Full time</span></div>
+        <div class="body">
+          <h3>Head of Systems Development · <span class="co">Solink</span></h3>
+          <ul>
+            <li>Architected Soltrak, a high-availability energy monitoring platform designed for fault-tolerant operations.</li>
+            <li>Built internal platforms that automated operations — reporting frameworks and energy financial models embedded in day-to-day processes.</li>
+            <li>Owned new product delivery end to end, including an automated energy consulting platform from architecture through build.</li>
+          </ul>
+          <div class="tags"><span>Software engineering</span><span>Battery and Solar Financial Modeling</span><span>Solutions Architecture</span><span>Technical Leadership</span><span>Node.js</span><span>Postgres</span><span>Appscript</span><span>AWS</span></div>
+        </div>
+      </article>
+
+      <article class="job energy" data-year="2023" data-label="Solink" data-kind="energy">
+        <div class="when"><span class="yr">2023 – 2024</span><span class="meta">Full time</span></div>
+        <div class="body">
+          <h3>Systems Engineer · <span class="co">Solink</span></h3>
+          <ul>
+            <li>Built the battery financial modelling strategy the company used for proposals — simulating Eskom se Push load-shedding schedules, seasonality and multi-year scenario paths, then switching to arbitrage or grid-avoidance dispatch when shedding eased so projects showed full financial sensitivity.</li>
+            <li>Led the modelling approach across the team, mentored engineers on it, and reviewed every proposal that came through.</li>
+            <li>Optimised system sizing with the financial models, showing where oversizing for rare events hit diminishing returns and where the practical cut-off sat.</li>
+            <li>Optimised solar forecast operating points to reduce costs, linking prediction outputs to dispatch and commercial outcomes.</li>
+            <li>Wrote the control algorithms behind the energy models and delivered a client peak-shaving optimisation solution.</li>
+            <li>Built machine learning models for solar production forecasting and advanced learned prediction to support system performance, financial modelling and consulting workflows.</li>
+            <li>Automated operations reporting and added anomaly detection so underperformance surfaces early from distributional shifts.</li>
+            <li>Defined the end-to-end architecture for an automated energy consulting platform.</li>
+            <li>Tightened delivery cycles by introducing agile ways of working across the engineering team.</li>
+          </ul>
+          <div class="tags"><span>Software engineering</span><span>Battery and Solar Financial Modeling</span><span>Battery System Control Systems</span><span>Forecasting</span><span>Machine learning</span><span>Optimisation</span><span>Technical Leadership</span><span>Solutions Architecture</span><span>Node.js</span><span>Postgres</span><span>Appscript</span></div>
+        </div>
+      </article>
+
+      <article class="job" data-year="2022" data-label="Bytefuse" data-kind="ai">
+        <div class="when"><span class="yr">2022 – 2023</span><span class="meta">Full time</span></div>
+        <div class="body">
+          <h3>Machine Learning Engineer · <span class="co">Bytefuse.ai</span></h3>
+          <ul>
+            <li>Built reinforcement-learning controllers for traffic signals to improve flow and reduce congestion.</li>
+            <li>Delivered machine learning solutions for energy-industry problems.</li>
+          </ul>
+          <div class="tags"><span>Software engineering</span><span>Machine learning</span><span>Optimisation</span><span>Reinforcement learning</span></div>
+        </div>
+      </article>
+
+      <article class="job edu" data-year="2020" data-label="MSc Analytics" data-kind="edu">
+        <div class="when"><span class="yr">2020 – 2022</span><span class="meta">Education</span></div>
+        <div class="body">
+          <h3>MSc Advanced Analytics · <span class="co">University of Cape Town</span></h3>
+          <ul>
+            <li>Thesis: reinforcement learning for peak shaving — applying RL to a real energy optimisation problem.</li>
+            <li>Advanced statistics and modelling: multivariate statistics, regression, simulation, optimisation and machine learning.</li>
+          </ul>
+          <div class="tags"><span>Machine learning</span><span>Optimisation</span><span>Battery System Control Systems</span><span>Statistics</span><span>Reinforcement learning</span></div>
+        </div>
+      </article>
+
+      <article class="job edu" data-year="2019" data-label="MSc Data Science" data-kind="edu">
+        <div class="when"><span class="yr">2019 – 2020</span><span class="meta">Education</span></div>
+        <div class="body">
+          <h3>MSc Data Science · <span class="co">University of Cape Town</span></h3>
+          <ul>
+            <li>Core training in supervised and unsupervised learning, industry data science, databases and visualisation.</li>
+          </ul>
+          <div class="tags"><span>Machine learning</span><span>Data engineering</span><span>Data visualisation</span><span>Databases</span></div>
+        </div>
+      </article>
+
+      <article class="job energy" data-year="2017" data-label="SolaFuture" data-kind="energy">
+        <div class="when"><span class="yr">2017 – 2019</span><span class="meta">First roles</span></div>
+        <div class="body">
+          <h3>Junior Software Engineer · <span class="co">SolaFuture Energy</span></h3>
+          <p class="earlier">Intern in 2017, then Junior Software Engineer 2018–2019.</p>
+          <ul>
+            <li>Created SolaFuture’s first battery sizing software — a Python-backed financial model that simulated projects, ran scenarios and generated all client battery proposals.</li>
+            <li>The tool became the company’s standard proposal engine and continued in use for years after I left.</li>
+            <li>Built a peak-shaving model that was sold as a commercial product, including the forecasting needed to drive peak-shaving algorithms.</li>
+            <li>Built early renewables software on Python, SQL, VBA and Linux systems.</li>
+          </ul>
+          <div class="tags"><span>Software engineering</span><span>Battery and Solar Financial Modeling</span><span>Battery System Control Systems</span><span>Forecasting</span><span>VBA</span><span>Linux server</span><span>SQL</span></div>
+        </div>
+      </article>
+
+      <article class="job edu" data-year="2012" data-label="BEng" data-kind="edu">
+        <div class="when"><span class="yr">2012 – 2018</span><span class="meta">Education</span></div>
+        <div class="body">
+          <h3>BEng Electrical &amp; Electronic Engineering · <span class="co">Stellenbosch University</span></h3>
+          <p class="earlier">Electrical and electronic engineering foundation — the base for later work in energy systems and data science.</p>
+          <div class="tags"><span>Engineering</span><span>Systems</span><span>Solutions Architecture</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="closing">
+    <p>Open to conversations about energy systems, applied AI and building things that hold up in production. · <a href="mailto:tiff.woodley@gmail.com">tiff.woodley@gmail.com</a></p>
+  </div>
+</main>
+
+<div class="story-backdrop" id="storyBackdrop" hidden></div>
+<aside class="story-panel" id="storyPanel" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+  <div class="story-head">
+    <div>
+      <p class="story-kicker" id="storyKicker">Skill story</p>
+      <h2 id="storyTitle">Skill</h2>
+    </div>
+    <button type="button" class="story-close" id="storyClose" aria-label="Close story panel">×</button>
+  </div>
+  <div class="story-body" id="storyBody"></div>
+</aside>
+
+<script>
+(function(){
+var d=document,root=d.documentElement,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+d.getElementById('begin').addEventListener('click',function(){
+  d.getElementById('cv').scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});
+});
+
+/* Hero dusk→night video: play once, hold on night with tiny city-light sparks */
+(function(){
+  var video=d.querySelector('.hero-video');
+  var media=d.getElementById('heroMedia');
+  var flicker=media&&media.querySelector('.hero-flicker');
+  if(!video)return;
+  if(rm){video.removeAttribute('autoplay');video.pause();return}
+  var done=false;
+  function seedSparks(){
+    if(!flicker||flicker.childNodes.length)return;
+    var spots=[
+      [22,58],[28,72],[34,64],[39,78],[45,60],[48,70],[52,81],[56,66],
+      [60,74],[64,62],[68,79],[72,68],[76,75],[80,63],[84,77],[31,84],
+      [42,55],[55,58],[66,55],[74,82],[26,66],[50,64],[58,70],[78,70]
+    ];
+    spots.forEach(function(p,i){
+      var s=d.createElement('span');
+      s.style.left=p[0]+'%';
+      s.style.top=p[1]+'%';
+      s.style.setProperty('--d',(1.4+((i*17)%23)/20)+'s');
+      s.style.setProperty('--delay',((i*37)%100)/100+'s');
+      if(i%5===0){s.style.width='3px';s.style.height='3px'}
+      flicker.appendChild(s);
+    });
+  }
+  function startFlicker(){
+    if(!media||done)return;
+    done=true;
+    try{video.currentTime=Math.max(0,(video.duration||0)-0.05)}catch(e){}
+    video.pause();
+    seedSparks();
+    media.classList.add('is-flickering');
+  }
+  video.addEventListener('ended',startFlicker);
+  d.addEventListener('visibilitychange',function(){
+    if(d.hidden){
+      video.pause();
+      if(media)media.classList.remove('is-flickering');
+      return;
+    }
+    if(done){
+      if(media)media.classList.add('is-flickering');
+      return;
+    }
+    var p=video.play();if(p&&p.catch)p.catch(function(){})
+  });
+})();
+
+var jobs=[].slice.call(d.querySelectorAll('.job')),cur=null,st=d.getElementById('status'),clr=d.getElementById('clear'),all=d.getElementById('toggleAll');
+var chev='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>';
+function label(){var n=jobs.filter(function(j){return j.classList.contains('closed')}).length;all.textContent=n===jobs.length?'Expand all':'Collapse all'}
+function fold(j,closed){j.classList.toggle('closed',closed);j.querySelector('.fb').setAttribute('aria-expanded',String(!closed));label()}
+jobs.forEach(function(j){
+ var b=j.querySelector('.body'),h=b.querySelector('h3'),f=d.createElement('div'),i=d.createElement('div');
+ f.className='fold';[].slice.call(b.children,1).forEach(function(c){i.appendChild(c)});f.appendChild(i);b.appendChild(f);
+ var btn=d.createElement('button');btn.className='fb';btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Show or hide details');btn.innerHTML=chev;h.appendChild(btn);
+ h.addEventListener('click',function(){fold(j,!j.classList.contains('closed'))});
+});
+all.addEventListener('click',function(){var c=all.textContent==='Collapse all';jobs.forEach(function(j){fold(j,c)})});
+var skillAliases={
+ 'llm workflows':['llm workflows','llms','generative ai'],
+ 'llms':['llms','llm workflows','generative ai'],
+ 'generative ai':['generative ai','llms','llm workflows'],
+ 'battery and solar financial modeling':['battery and solar financial modeling','financial modelling','financial modeling','financial models','financial model'],
+ 'battery system control systems':['battery system control systems','battery systems','control algorithms','control systems','peak shaving','battery'],
+ 'forecasting':['forecasting','forecasts','forecast','solar production','learned prediction','peak-shaving algorithms'],
+ 'optimisation':['optimisation','optimize','optimise','scenario-based','system size','forecast operating','reinforcement learning'],
+ 'machine learning':['machine learning','learned prediction','reinforcement learning','supervised','unsupervised'],
+ 'software engineering':['software engineering','python','node.js','software engineer','software work'],
+ 'technical leadership':['technical leadership','lead data','head of','mentored','led the modelling'],
+ 'solutions architecture':['solutions architecture','architecture','architected','architect','end-to-end architecture']
+};
+var skillStories={
+ 'battery and solar financial modeling':{
+  lead:'Battery and solar financial modelling has been how I turn uncertain energy futures into sizing decisions, proposals and project risk views.',
+  paras:[
+   'At SolaFuture I built the company’s first battery sizing software: a Python-backed financial model that simulated projects, ran scenarios and generated every client battery proposal. It became the standard proposal engine and stayed in use for years after I left.',
+   'At Solink, as load shedding intensified and sites looked to batteries to cut diesel costs, I built the modelling strategy the company used — pulling Eskom se Push schedules, modelling seasonality and projecting multi-year scenario paths. When shedding eased, the same framework switched to other dispatch strategies such as arbitrage or grid avoidance, so projects still showed a full sensitivity to financial risk.',
+   'I led that approach across the team, mentored engineers on it and reviewed every proposal that came through. The same models also guided sizing: showing how oversizing for a handful of extreme events quickly hit diminishing returns, and where the practical cut-off sat.'
+  ]
+ },
+ 'battery system control systems':{
+  lead:'Battery control and peak shaving are where my engineering work turns storage into an operational strategy.',
+  paras:[
+   'At SolaFuture I built a peak-shaving model that was sold as a commercial product — early proof that control logic and battery behaviour could be packaged into something clients would buy.',
+   'At Solink I wrote the control algorithms behind the energy models and delivered a client peak-shaving optimisation problem, connecting dispatch logic to the financial and forecasting stack around it.',
+   'That thread continues through my MSc Advanced Analytics thesis: reinforcement learning for peak shaving, treating storage as a controllable asset in a real optimisation problem.'
+  ]
+ },
+ 'forecasting':{
+  lead:'Forecasting has followed me from peak-shaving algorithms through solar production models to production ML systems.',
+  paras:[
+   'At SolaFuture I built the forecasting needed to drive peak-shaving algorithms — predicting load behaviour so battery control could act at the right moments.',
+   'At Solink I did solar production forecasting and advanced learned prediction, feeding financial models, control strategies and consulting workflows with forward-looking generation estimates.',
+   'In my current role at Sand Technologies the emphasis has shifted to the framework around forecasting: taking different model approaches and building them into production systems with MLOps, monitoring and reliability baked in.'
+  ]
+ },
+ 'optimisation':{
+  lead:'Optimisation, for me, is choosing better actions under uncertainty — in energy systems and in product decisions.',
+  paras:[
+   'In my MSc Advanced Analytics work I used reinforcement learning for peak shaving, treating battery control as a real optimisation problem with costs, constraints and delayed rewards.',
+   'At Solink I optimised solar forecast operating points to reduce costs and ran system-size optimisation — finding where extra capacity stopped paying for itself under load-shedding and commercial constraints.',
+   'In my current role at Sand Technologies that same habit shows up as scenario-based decision making: structuring options and trade-offs so teams can choose clearly when outcomes are uncertain.'
+  ]
+ },
+ 'machine learning':{
+  lead:'Machine learning runs from my masters through applied energy models to production systems in my current role.',
+  paras:[
+   'My MSc Data Science and MSc Advanced Analytics at UCT built the foundation — supervised and unsupervised learning, statistics, simulation and reinforcement learning for peak shaving.',
+   'At Bytefuse I shipped applied ML systems, including reinforcement-learning controllers for traffic and machine learning solutions for energy-industry problems.',
+   'At Solink I used machine learning for solar production forecasting and learned prediction models that fed financial modelling, control and consulting workflows. At Sand Technologies I now lead data science delivery and production ML — pipelines, forecasting frameworks, MLOps monitoring and generative AI workflows that keep models useful after launch.'
+  ]
+ },
+ 'generative ai':{
+  lead:'Generative AI is most valuable when it speeds up trustworthy delivery — not when it becomes a demo.',
+  paras:[
+   'At Sand Technologies I bring LLMs into analytical and software workflows so teams can move faster while still shipping robust applications.',
+   'That sits alongside production MLOps work: quality, drift monitoring and architecture that keep systems reliable once they leave the notebook.',
+   'The focus is applied: useful assistants and accelerators wired into real delivery, with the same engineering bar as any other production component.'
+  ]
+ },
+ 'llm workflows':{
+  lead:'LLM workflows are how generative models become part of everyday analytical and engineering practice.',
+  paras:[
+   'At Sand I design and use LLM-assisted workflows that compress the path from messy requirements to working analytical software.',
+   'The goal is repeatable process — prompts, checks and integration patterns that teams can trust — rather than one-off experiments.',
+   'This sits next to MLOps and data-quality work, so AI acceleration never outruns reliability.'
+  ]
+ },
+ 'mlops':{
+  lead:'MLOps is what keeps models honest after they meet reality.',
+  paras:[
+   'At Sand Technologies I build reusable data-quality and drift monitoring so distribution shifts are caught before production models quietly degrade.',
+   'That includes monitoring architecture organisations can actually operate — not just metrics dashboards, but systems that protect reliability over time.',
+   'Paired with generative AI delivery, MLOps is the discipline that lets ambition ship without becoming fragile.'
+  ]
+ },
+ 'software engineering':{
+  lead:'Software engineering is how I turn models and ideas into systems teams can run.',
+  paras:[
+   'From SolaFuture through Solink, Bytefuse and Sand, I have built production software around energy models, ML systems, automation and data products — mostly in Python, with Node.js, Postgres and cloud services where the platform needed them.',
+   'The work spans scripts that became services, monitoring platforms, consulting tools and analytical pipelines: code that has to be clear, maintainable and reliable under real operating conditions.',
+   'For me, software engineering is the craft layer under everything else — the difference between a clever analysis and something that holds up in production.'
+  ]
+ },
+ 'data engineering':{
+  lead:'Good models need clean, dependable data paths underneath them.',
+  paras:[
+   'At Sand I lead pipelines and data architecture for Healthcare products, turning operational data into something analysis and ML can trust.',
+   'That includes data-quality and monitoring patterns so issues surface before they become model or product failures.',
+   'Earlier academic and industry work reinforced the same idea: data engineering is how insight becomes repeatable.'
+  ]
+ },
+ 'solutions architecture':{
+  lead:'Solutions architecture is how I keep complex energy and AI systems coherent from idea to production.',
+  paras:[
+   'At Solink I defined end-to-end architecture for an automated energy consulting platform and later, as Head of Systems Development, owned product delivery from design through build — including Soltrak’s high-availability monitoring design.',
+   'At Sand I shape data and monitoring architecture for Healthcare and central R&D so analytical systems can scale with the organisation.',
+   'The pattern is consistent: clarify boundaries, reduce fragility, and make the system understandable to the people who run it.'
+  ]
+ },
+ 'technical leadership':{
+  lead:'Technical leadership, for me, means owning outcomes end to end — problem framing through shipped systems.',
+  paras:[
+   'At Sand I lead data science and engineering for Healthcare: framing problems, choosing approaches and delivering with cross-functional teams.',
+   'At Solink, as Head of Systems Development, I owned new product delivery and the platforms that automated operations around energy models and reporting.',
+   'Across both, leadership is practical: set the technical direction, keep quality high, and make sure the work lands in production.'
+  ]
+ }
+};
+var storyPanel=d.getElementById('storyPanel');
+var storyBackdrop=d.getElementById('storyBackdrop');
+var storyBody=d.getElementById('storyBody');
+var storyTitle=d.getElementById('storyTitle');
+var storyKicker=d.getElementById('storyKicker');
+function norm(s){return (s||'').toLowerCase().replace(/\s+/g,' ').trim()}
+function termsFor(t){
+ t=norm(t);
+ return skillAliases[t]||[t];
+}
+function jobMatches(j,t){
+ var hay=norm(j.textContent);
+ return termsFor(t).some(function(term){return hay.indexOf(term)>-1});
+}
+function tagMatches(label,t){
+ var tag=norm(label);
+ return termsFor(t).some(function(term){return tag===term||tag.indexOf(term)>-1||term.indexOf(tag)>-1});
+}
+function matchingJobs(t){return jobs.filter(function(j){return jobMatches(j,t)})}
+function closeStory(){
+ storyPanel.classList.remove('is-on');
+ storyBackdrop.classList.remove('is-on');
+ storyPanel.setAttribute('aria-hidden','true');
+ setTimeout(function(){
+  if(!storyPanel.classList.contains('is-on')){
+   storyPanel.hidden=true;storyBackdrop.hidden=true;
+  }
+ },320);
+}
+function openStory(skillLabel, matched){
+ var key=norm(skillLabel);
+ var story=skillStories[key];
+ storyTitle.textContent=skillLabel;
+ storyKicker.textContent='Experience narrative';
+ var html='';
+ if(story){
+  html+='<p class="story-lead">'+story.lead+'</p>';
+  story.paras.forEach(function(p){html+='<p>'+p+'</p>'});
+ }else{
+  html+='<p class="story-lead">Where <strong>'+skillLabel+'</strong> shows up across my path.</p>';
+  html+='<p>These roles are the clearest places this skill was used in practice. Use the links below to jump into each chapter on the timeline.</p>';
+ }
+ html+='<ul class="story-roles">';
+ matched.forEach(function(j){
+  var kind=j.classList.contains('edu')?'edu':j.classList.contains('energy')?'energy':'ai';
+  var yr=(j.querySelector('.yr')||{}).textContent||j.dataset.year||'';
+  var ttl=(j.querySelector('h3')||{}).childNodes[0]?j.querySelector('h3').childNodes[0].textContent.replace(/\s·\s*$/,'').trim():(j.dataset.label||'Role');
+  var co=(j.querySelector('.co')||{}).textContent||'';
+  html+='<li><button type="button" class="'+kind+'" data-job-year="'+j.dataset.year+'">'
+   +'<span class="yr">'+yr+'</span>'
+   +'<span class="ttl">'+ttl+(co?' · <span class="co">'+co+'</span>':'')+'</span>'
+   +'</button></li>';
+ });
+ html+='</ul>';
+ storyBody.innerHTML=html;
+ storyBody.querySelectorAll('[data-job-year]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+   var job=jobs.find(function(j){return j.dataset.year===btn.getAttribute('data-job-year')});
+   if(!job)return;
+   if(job.classList.contains('closed'))fold(job,false);
+   job.scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});
+  });
+ });
+ storyPanel.hidden=false;storyBackdrop.hidden=false;
+ storyPanel.setAttribute('aria-hidden','false');
+ requestAnimationFrame(function(){
+  storyPanel.classList.add('is-on');
+  storyBackdrop.classList.add('is-on');
+ });
+}
+function apply(){
+ var n=0,first=null,matched=[];
+ jobs.forEach(function(j){
+  var m=true;
+  if(cur&&cur.t)m=jobMatches(j,cur.t);
+  if(cur&&cur.s==='energy')m=j.classList.contains('energy');
+  if(cur&&cur.s==='ai')m=!j.classList.contains('energy')&&!j.classList.contains('edu');
+  if(cur&&cur.s==='edu')m=j.classList.contains('edu');
+  if(m){n++;matched.push(j);if(!first)first=j}
+  j.miss=!m;
+  j.querySelectorAll('.tags span').forEach(function(s){s.classList.toggle('hit',!!(cur&&cur.t&&tagMatches(s.textContent,cur.t)))});
+ });
+ var none=cur&&n===0;
+ jobs.forEach(function(j){j.classList.toggle('dim',!!cur&&!none&&j.miss);if(cur&&!j.miss&&!none&&j.classList.contains('closed'))fold(j,false)});
+ d.querySelectorAll('.skills li').forEach(function(li){li.classList.toggle('sel',!!(cur&&cur.t&&norm(li.textContent)===norm(cur.l)))});
+ d.querySelectorAll('[data-sector]').forEach(function(c){c.setAttribute('aria-pressed',String(!!(cur&&cur.s===c.dataset.sector)))});
+ clr.hidden=!cur;
+ st.textContent=!cur?'Tip: click any skill or tag to see where it was used.':none?'No entries match “'+cur.l+'”.':'Showing '+n+' of '+jobs.length+' entries for “'+cur.l+'”.';
+ return {first:first,matched:matched,none:none};
+}
+function clearFilter(){
+ cur=null;
+ apply();
+ closeStory();
+}
+function pick(o,opts){
+ opts=opts||{};
+ var off=cur&&cur.l===o.l;
+ cur=off?null:o;
+ var res=apply();
+ if(off||!cur){closeStory();return res.first}
+ if(opts.scroll&&res.first)res.first.scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});
+ if(opts.story&&cur.t&&!res.none)openStory(cur.l,res.matched);
+ else closeStory();
+ return res.first;
+}
+d.querySelectorAll('.skills li,.tags span').forEach(function(e){
+ e.tabIndex=0;e.setAttribute('role','button');
+ e.setAttribute('title','Show related experience');
+ e.addEventListener('click',function(){
+  var fromSkills=!!e.closest('.skills');
+  pick({t:norm(e.textContent),l:e.textContent},{scroll:fromSkills,story:fromSkills});
+ });
+ e.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();e.click()}});
+});
+d.querySelectorAll('[data-sector]').forEach(function(c){c.addEventListener('click',function(){pick({s:c.dataset.sector,l:c.textContent})})});
+clr.addEventListener('click',clearFilter);
+d.getElementById('storyClose').addEventListener('click',clearFilter);
+d.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&(cur||storyPanel.classList.contains('is-on')))clearFilter()});
+d.getElementById('theme').addEventListener('click',function(){
+ var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+ root.dataset.theme=dark?'light':'dark';
+});
+/* PDF download uses a pre-generated clean file (no browser headers/footers).
+   Browser print cannot disable those headers from the page itself. */
+function preparePrint(){
+  if(typeof clearFilter==='function')try{clearFilter()}catch(e){}
+  jobs.forEach(function(j){if(j.classList.contains('closed'))fold(j,false)});
+  jobs.forEach(function(j){j.classList.remove('dim');j.classList.add('in')});
+  d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+  if(storyPanel)closeStory();
+  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+  window.scrollTo(0,0);
+}
+addEventListener('beforeprint',preparePrint);
+
+var tl=d.getElementById('timeline');
+var spine=d.createElement('div');
+spine.className='tl-spine';
+spine.innerHTML='<div class="tl-segs" id="tlSegs"></div><div class="tl-fill"></div><div class="tl-thumb" aria-hidden="true"></div>';
+tl.insertBefore(spine,tl.firstChild);
+var fill=spine.querySelector('.tl-fill'),thumb=spine.querySelector('.tl-thumb'),tlSegs=spine.querySelector('.tl-segs');
+
+var rail=d.getElementById('careerRail'),railFill=d.getElementById('careerFill'),railThumb=d.getElementById('careerThumb');
+var railNodes=d.getElementById('careerNodes'),railReadout=d.getElementById('careerReadout'),railTrack=d.getElementById('careerTrack');
+var railSegs=d.getElementById('careerSegs');
+var firstJob=jobs[0],lastJob=jobs[jobs.length-1],dragging=false;
+
+function kindOf(j){
+  if(j.classList.contains('edu'))return 'edu';
+  if(j.classList.contains('energy'))return 'energy';
+  return 'ai';
+}
+function buildSegs(host,vertical){
+  host.innerHTML='';
+  var n=jobs.length;
+  if(!n)return;
+  jobs.forEach(function(j,i){
+    var seg=d.createElement('div');
+    seg.className=(vertical?'career-seg':'tl-seg')+' '+kindOf(j);
+    if(n===1){seg.style.top='0';seg.style.height='100%'}
+    else{
+      var a=i/(n-1);
+      var start=i===0?0:((i-1)/(n-1)+a)/2;
+      var end=i===n-1?1:(a+(i+1)/(n-1))/2;
+      seg.style.top=(start*100)+'%';
+      seg.style.height=((end-start)*100)+'%';
+    }
+    host.appendChild(seg);
+  });
+}
+buildSegs(railSegs,true);
+buildSegs(tlSegs,false);
+
+jobs.forEach(function(j,i){
+  var kind=kindOf(j);
+  var btn=d.createElement('button');
+  btn.type='button';
+  btn.className=kind;
+  btn.style.top=((jobs.length===1?0:i/(jobs.length-1))*100)+'%';
+  var typeLabel=kind==='edu'?'Education':kind==='energy'?'Energy role':'Data & AI role';
+  btn.setAttribute('aria-label','Jump to '+typeLabel+': '+(j.dataset.label||'entry')+' '+(j.dataset.year||''));
+  btn.innerHTML='<span class="career-year">'+(j.dataset.year||'')+'</span>';
+  btn.addEventListener('click',function(){j.scrollIntoView({behavior:rm?'auto':'smooth',block:'center'})});
+  railNodes.appendChild(btn);
+  j._railBtn=btn;
+  j.dataset.kind=kind;
+});
+
+function clamp(n,a,b){return Math.max(a,Math.min(b,n))}
+function maxScrollY(){return Math.max(0,root.scrollHeight-innerHeight)}
+function atPageBottom(){return scrollY>=maxScrollY()-2}
+function careerScrollBounds(){
+  var mid=innerHeight*0.42;
+  var y0=firstJob.getBoundingClientRect().top+scrollY-mid;
+  var yLast=lastJob.getBoundingClientRect().top+scrollY-mid;
+  /* Map rail end to page bottom so the thumb can always reach 100% */
+  var y1=Math.max(yLast,maxScrollY());
+  return {y0:y0,y1:y1};
+}
+function setRail(p,job){
+  var pct=clamp(p,0,1)*100;
+  railFill.style.height=pct+'%';
+  railThumb.style.top=pct+'%';
+  railThumb.setAttribute('aria-valuenow',Math.round(pct));
+  if(job){
+    var kind=kindOf(job);
+    var prefix=kind==='edu'?'Edu · ':kind==='energy'?'Energy · ':'AI · ';
+    railReadout.textContent=prefix+(job.dataset.year||'')+' · '+(job.dataset.label||'');
+    railReadout.className='career-readout'+(kind==='edu'?' edu':kind==='energy'?' energy':'');
+    railThumb.classList.toggle('energy',kind==='energy');
+    railThumb.classList.toggle('edu',kind==='edu');
+    jobs.forEach(function(j){j._railBtn&&j._railBtn.setAttribute('aria-current',j===job?'true':'false')});
+  }
+}
+function scrollToRailProgress(p){
+  var b=careerScrollBounds();
+  scrollTo({top:b.y0+(b.y1-b.y0)*clamp(p,0,1)});
+}
+function progressFromPointer(clientY){
+  var r=railTrack.getBoundingClientRect();
+  return clamp((clientY-r.top)/r.height,0,1);
+}
+railThumb.addEventListener('pointerdown',function(e){dragging=true;railThumb.setPointerCapture(e.pointerId);e.preventDefault()});
+railThumb.addEventListener('pointermove',function(e){
+  if(!dragging)return;
+  var p=progressFromPointer(e.clientY);
+  setRail(p,jobs[Math.round(p*(jobs.length-1))]||jobs[0]);
+  scrollToRailProgress(p);
+});
+function endDrag(e){if(!dragging)return;dragging=false;try{railThumb.releasePointerCapture(e.pointerId)}catch(err){}}
+railThumb.addEventListener('pointerup',endDrag);
+railThumb.addEventListener('pointercancel',endDrag);
+railTrack.addEventListener('click',function(e){
+  if(e.target===railThumb||e.target.closest('button'))return;
+  scrollToRailProgress(progressFromPointer(e.clientY));
+});
+railThumb.addEventListener('keydown',function(e){
+  var now=parseFloat(railThumb.getAttribute('aria-valuenow')||'0')/100;
+  if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();scrollToRailProgress(now+0.1)}
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();scrollToRailProgress(now-0.1)}
+});
+
+var bar=d.getElementById('progress'),tick=false;
+function updateTimelines(){
+  var mid=innerHeight*0.42,activeJob=jobs[0],best=Infinity,activeIdx=0;
+  jobs.forEach(function(j,i){
+    var r=j.getBoundingClientRect();
+    var dist=Math.abs((r.top+r.bottom)/2-mid);
+    j.classList.toggle('passed',r.bottom<mid+40);
+    j.classList.toggle('active',false);
+    if(dist<best){best=dist;activeJob=j;activeIdx=i}
+  });
+  if(activeJob)activeJob.classList.add('active');
+
+  var rect=tl.getBoundingClientRect();
+  var start=innerHeight*0.55;
+  var span=Math.max(1,rect.height*0.85);
+  var p=clamp((start-rect.top)/span,0,1);
+  if(rect.bottom<innerHeight*0.2||atPageBottom())p=1;
+  if(rect.top>innerHeight*0.85)p=0;
+  fill.style.height=(p*100)+'%';
+  thumb.style.top=(p*100)+'%';
+  thumb.classList.toggle('energy',!!(activeJob&&activeJob.classList.contains('energy')));
+  thumb.classList.toggle('edu',!!(activeJob&&activeJob.classList.contains('edu')));
+
+  if(!dragging){
+    var b=careerScrollBounds();
+    var scrollP=atPageBottom()?1:clamp((scrollY-b.y0)/Math.max(1,b.y1-b.y0),0,1);
+    var idxP=activeIdx/Math.max(1,jobs.length-1);
+    var railP=atPageBottom()?1:idxP*0.65+scrollP*0.35;
+    setRail(railP,atPageBottom()?lastJob:activeJob);
+    var sec=d.getElementById('timeline-section').getBoundingClientRect();
+    rail.classList.toggle('is-on',sec.top<innerHeight*0.7&&sec.bottom>innerHeight*0.25&&innerWidth>1100);
+  }
+}
+function prog(){
+  tick=false;
+  var h=maxScrollY();
+  bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';
+  updateTimelines();
+}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});
+addEventListener('resize',updateTimelines,{passive:true});
+prog();
+
+if('IntersectionObserver' in window && !rm){
+  root.classList.add('js');
+  var els=d.querySelectorAll('section>h2,.lead,.profile p,.skills>div,.job');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  els.forEach(function(e){e.classList.add('rv');io.observe(e)});
+}
+})();
+</script>
+</body>
+</html>
