@@ -597,9 +597,10 @@ button:focus-visible,[tabindex]:focus-visible,a:focus-visible{outline:2px solid 
         <div class="body">
           <h3>Systems Engineer · <span class="co">Solink</span></h3>
           <ul>
-            <li>Built the battery financial modelling strategy the company used for proposals — simulating Eskom se Push load-shedding schedules, seasonality and multi-year scenario paths, then switching to arbitrage or grid-avoidance dispatch when shedding eased so projects showed full financial sensitivity.</li>
-            <li>Led the modelling approach across the team, mentored engineers on it, and reviewed every proposal that came through.</li>
-            <li>Optimised system sizing with the financial models, showing where oversizing for rare events hit diminishing returns and where the practical cut-off sat.</li>
+            <li>Built the modelling strategy the company adopted when there was no established way to model battery projects under load-shedding uncertainty — using EskomSePush schedules, seasonality and multi-year scenario paths to show each project’s true risk if load-shedding eased or disappeared.</li>
+            <li>When shedding eased, the same framework switched to other dispatch strategies such as arbitrage and grid avoidance, so clients saw full financial sensitivity, not just short-term returns.</li>
+            <li>Guided sizing with the models, showing that oversizing for a handful of extreme events quickly hit diminishing returns, and where the practical cut-off sat.</li>
+            <li>Led this approach across the team, mentored engineers in it and reviewed every proposal before it went out.</li>
             <li>Optimised solar forecast operating points to reduce costs, linking prediction outputs to dispatch and commercial outcomes.</li>
             <li>Wrote the control algorithms behind the energy models and delivered a client peak-shaving optimisation solution.</li>
             <li>Built machine learning models for solar production forecasting and advanced learned prediction to support system performance, financial modelling and consulting workflows.</li>
@@ -652,8 +653,10 @@ button:focus-visible,[tabindex]:focus-visible,a:focus-visible{outline:2px solid 
           <h3>Junior Software Engineer · <span class="co">SolaFuture Energy</span></h3>
           <p class="earlier">Intern in 2017, then Junior Software Engineer 2018–2019.</p>
           <ul>
-            <li>Created SolaFuture’s first battery sizing software — a Python-backed financial model that simulated projects, ran scenarios and generated all client battery proposals.</li>
-            <li>The tool became the company’s standard proposal engine and continued in use for years after I left.</li>
+            <li>Started as an intern while finishing my degree; wrote software that simulated battery operation hour by hour and realised the same engine could size battery and solar systems optimally.</li>
+            <li>Built a Python backend linked to the company’s Excel financial models that looped over system configurations and produced design and sizing reports.</li>
+            <li>Grew that work into SolaFuture’s first battery sizing software — a Python-backed financial model that simulated projects, ran scenarios and generated every client battery proposal.</li>
+            <li>The tool became the company’s standard proposal engine and stayed in use for years after I left.</li>
             <li>Built a peak-shaving model that was sold as a commercial product, including the forecasting needed to drive peak-shaving algorithms.</li>
             <li>Built early renewables software on Python, SQL, VBA and Linux systems.</li>
           </ul>
@@ -770,11 +773,10 @@ var skillAliases={
 };
 var skillStories={
  'battery and solar financial modeling':{
-  lead:'Battery and solar financial modelling has been how I turn uncertain energy futures into sizing decisions, proposals and project risk views.',
+  lead:'',
   paras:[
-   'At SolaFuture I built the company’s first battery sizing software: a Python-backed financial model that simulated projects, ran scenarios and generated every client battery proposal. It became the standard proposal engine and stayed in use for years after I left.',
-   'At Solink, as load shedding intensified and sites looked to batteries to cut diesel costs, I built the modelling strategy the company used — pulling Eskom se Push schedules, modelling seasonality and projecting multi-year scenario paths. When shedding eased, the same framework switched to other dispatch strategies such as arbitrage or grid avoidance, so projects still showed a full sensitivity to financial risk.',
-   'I led that approach across the team, mentored engineers on it and reviewed every proposal that came through. The same models also guided sizing: showing how oversizing for a handful of extreme events quickly hit diminishing returns, and where the practical cut-off sat.'
+   'I started at SolaFuture as an intern while finishing my degree. I was asked to write software that simulated battery operation hour by hour, and I realised the same engine could size battery and solar systems optimally. I built a Python backend linked to the company’s Excel financial models that looped over system configurations and produced design and sizing reports. It grew into the company’s first battery sizing software: a Python-backed financial model that simulated projects, ran scenarios and generated every client battery proposal. It became the standard proposal engine and stayed in use for years after I left.',
+   'At Solink, as load-shedding intensified and sites turned to batteries to cut diesel costs, there was no established way to model projects under that uncertainty. I built the modelling strategy the company adopted, using EskomSePush schedules, seasonality and multi-year scenario paths to show each project’s true risk if load-shedding eased or disappeared. When it did ease, the same framework switched to other dispatch strategies such as arbitrage and grid avoidance, so clients saw full financial sensitivity, not just short-term returns. The models also guided sizing, showing that oversizing for a handful of extreme events quickly hit diminishing returns, and where the practical cut-off sat. I led this approach across the team, mentored engineers in it and reviewed every proposal before it went out.'
   ]
  },
  'battery system control systems':{
@@ -902,7 +904,7 @@ function openStory(skillLabel, matched){
  storyKicker.textContent='Experience narrative';
  var html='';
  if(story){
-  html+='<p class="story-lead">'+story.lead+'</p>';
+  if(story.lead) html+='<p class="story-lead">'+story.lead+'</p>';
   story.paras.forEach(function(p){html+='<p>'+p+'</p>'});
  }else{
   html+='<p class="story-lead">Where <strong>'+skillLabel+'</strong> shows up across my path.</p>';
